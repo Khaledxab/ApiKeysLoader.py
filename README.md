@@ -32,7 +32,7 @@ A comprehensive system for managing and monitoring API keys with a Flask backend
 
 1. Clone the repository:
 ```bash
-git clone [https://khaledbenabderrahmen@bitbucket.org/ifarming/apikeysloader.py.git]
+git clone [https://github.com/Khaledxab/ApiKeysLoader.py.git]
 cd [apikeysloader.py]
 ```
 

@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  discord_bot:
+    build:
+      context: .
+      dockerfile: Dockerfile.discord_bot
+    env_file:
+      - .env
+    depends_on:
+      - flask_api
+
+  flask_api:
+    build:
+      context: .
+      dockerfile: Dockerfile.flask_api
+    env_file:
+      - .env
+    volumes:
+      - ./api_data:/app/data  
+    ports:
+      - "5000:5000"  

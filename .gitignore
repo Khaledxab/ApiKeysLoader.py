@@ -2,6 +2,4 @@ venv/
 .env
 api_manager.log
 api_state.json
-healthid.txt
-plantid.txt
 api_data/

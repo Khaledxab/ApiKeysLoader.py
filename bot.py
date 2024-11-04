@@ -7,6 +7,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+API_URL = os.getenv('STATS_API')
+BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
+
+
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)

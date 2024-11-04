@@ -15,7 +15,7 @@ load_dotenv()
 app = Flask(__name__)
 
 log_file = os.getenv('LOG_FILE')
-print(log_file)
+
 
 logging.basicConfig(
     filename=log_file,

@@ -20,9 +20,11 @@ REFRESH_INTERVAL = 300
 
 async def fetch_api_stats():
     """Fetch statistics from the API"""
+    print(f"Fetching stats from {API_URL}")
+
     async with aiohttp.ClientSession() as session:
         try:
-            async with session.get(API_URL) as response:
+            async with session.get("http://flask_api:5000/api/stats") as response:
                 if response.status == 200:
                     return await response.json()
                 return None

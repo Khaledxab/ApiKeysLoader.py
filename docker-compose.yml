@@ -9,6 +9,8 @@ services:
       - .env
     depends_on:
       - flask_api
+    networks:
+      - app_network
 
   flask_api:
     build:
@@ -17,6 +19,14 @@ services:
     env_file:
       - .env
     volumes:
-      - ./api_data:/app/data  
+      - ./api_data:/app/data
     ports:
-      - "5000:5000"  
+      - "5000:5000"
+    environment:
+      - DATA_DIR=/app/data
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

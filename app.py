@@ -14,7 +14,9 @@ load_dotenv()
 
 app = Flask(__name__)
 
-log_file = os.getenv('LOG_FILE')
+DATA_DIR = os.getenv('DATA_DIR', '/app/data')
+log_file = os.path.join(DATA_DIR, 'app.log')
+os.makedirs(DATA_DIR, exist_ok=True)
 
 
 logging.basicConfig(
@@ -56,6 +58,7 @@ class APIStateManager:
                 return lines[0].strip() if lines else "File is empty"
         except Exception as e:
             logging.error(f"Error reading from {filename}: {e}")
+            print(e)
             return "Error reading file"
 
     def delete_first_line(self, filename):
@@ -148,7 +151,7 @@ def get_stats():
 
 if __name__ == '__main__':
     try:
-        app.run(debug=os.getenv('FLASK_DEBUG', 'False') == 'True', port=int(os.getenv('FLASK_RUN_PORT', 5000)))
+        app.run(host="0.0.0.0", debug=True, port=int(os.getenv('FLASK_RUN_PORT', 5000)))
     except Exception as e:
         logging.error(f"Application error: {e}")
         state_manager.save_state()
